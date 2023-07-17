@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3fea77e9cbc452d8f98c1549e3061d4" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="DBModel.ControlQuestion" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="DBModel.Role" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="DBModel.Status" Width="1.5" PointX="5.25" PointY="12.125" />
+        <EntityTypeShape EntityType="DBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="DBModel.Usluga" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.Zakaz" Width="1.5" PointX="7.5" PointY="3.375" />
+        <AssociationConnector Association="DBModel.FK_Client_ControlQuestion" />
+        <AssociationConnector Association="DBModel.FK_Client_User" />
+        <AssociationConnector Association="DBModel.FK_Zakaz_Client" />
+        <AssociationConnector Association="DBModel.FK_Employee_User" />
+        <AssociationConnector Association="DBModel.FK_User_Role" />
+        <AssociationConnector Association="DBModel.FK_Zakaz_Status" />
+        <AssociationConnector Association="DBModel.FK_Zakaz_Product" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

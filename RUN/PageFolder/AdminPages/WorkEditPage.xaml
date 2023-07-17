@@ -1,0 +1,108 @@
+﻿<Page x:Class="RUN.PageFolder.AdminPages.WorkEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RUN.PageFolder.AdminPages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Редактирование работника" KeyDown="Page_KeyDown">
+
+    <Border CornerRadius="30"
+                Width="780"
+                Height="420"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF00B7CE"/>
+                <GradientStop Color="#FF006DFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="50"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Редактирование работника"
+               FontSize="28" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="6" Foreground="#FFE0E0E0"/>
+
+            <TextBox x:Name="TbSurname" Text="{Binding Surname}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                         Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Фамилия"
+                     Grid.Row="1" Grid.Column="1"/>
+
+            <TextBox x:Name="TbName" Grid.Row="2" Text="{Binding Name}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Имя"
+                     Grid.Column="1"/>
+
+            <TextBox x:Name="TbOtch" Text="{Binding Patronymic}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Отчество"
+                     Grid.Row="3" Grid.Column="1"/>
+
+            <TextBox x:Name="TbPhone"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0" Text="{Binding Phone}"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Номер телефона"
+                     Grid.Row="4" Grid.Column="1"/>
+
+            <TextBox x:Name="TbLogin" Text="{Binding User.Login}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Логин"
+                     Grid.Row="1" Grid.Column="4"/>
+
+            <TextBox x:Name="TbPassword" Text="{Binding User.Password}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Пароль"
+                     Grid.Row="2" Grid.Column="4"/>
+
+            <TextBox x:Name="TbSalary" Text="{Binding Salary}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Зарплата"
+                     Grid.Row="3" Grid.Column="4"/>
+
+            <TextBox x:Name="TbPremium" Text="{Binding Premium}"
+                     Height="40" FontSize="16" Width="250" Foreground="#FFE0E0E0" CaretBrush="#FFE0E0E0" SelectionBrush="#FFE0E0E0" BorderBrush="#FFE0E0E0" materialDesign:HintAssist.HintOpacity="1"
+                     VerticalContentAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"
+                     Style="{StaticResource MaterialDesignTextBox}" BorderThickness="2"  materialDesign:HintAssist.Hint="Премия"
+                     Grid.Row="4" Grid.Column="4"/>
+
+            <Button x:Name="BEdit" Grid.Row="5" Height="80" Width="80" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" 
+                    HorizontalAlignment="Center" Click="BEdit_Click" ToolTip="Редактировать">
+                <materialDesign:PackIcon Kind="EditCircle" Height="53" Width="53" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#FFE0E0E0"/>
+            </Button>
+
+            <Button x:Name="BOut" Grid.Row="5" Height="80" Width="80" Grid.Column="4" Background="{x:Null}" BorderBrush="{x:Null}" 
+                    HorizontalAlignment="Center" Click="BOut_Click" ToolTip="Назад" Cursor="Hand">
+                <materialDesign:PackIcon Kind="ArrowBackCircle" Height="53" Width="53" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFE0E0E0"/>
+            </Button>
+        </Grid>
+    </Border>
+</Page>

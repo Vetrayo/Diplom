@@ -1,0 +1,92 @@
+﻿<Page x:Class="RUN.PageFolder.UserPages.ListUserZakazPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RUN.PageFolder.UserPages"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Список моих заказов">
+
+    <Border CornerRadius="30"
+                Width="780"
+                Height="450"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF00B7CE"/>
+                <GradientStop Color="#FF006DFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="50"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="678*"/>
+                <ColumnDefinition Width="101*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="58*"/>
+                <RowDefinition Height="63*"/>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="169*"/>
+                <RowDefinition Height="39*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Список моих заказов" FontSize="28" FontWeight="Bold"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+               Grid.ColumnSpan="3" Foreground="#FFE0E0E0"/>
+
+            <materialDesign:PackIcon Kind="Search" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20 -3 0 0"
+                                     Height="30" Width="30" Panel.ZIndex="1" Foreground="#FFE0E0E0"/>
+            <TextBox x:Name="TbSearch" Grid.Row="1" Grid.Column="1" Margin="20 0 0 0" materialDesign:HintAssist.HintOpacity="1"
+                 Width="640" HorizontalAlignment="Left" Height="30" BorderBrush="#FFE0E0E0" FontSize="16"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Поиск" Padding="30 3 0 0"
+                 TextChanged="TbSearch_TextChanged" Foreground="#FFE0E0E0"/>
+
+            <DataGrid IsReadOnly="True" AutoGenerateColumns="False"
+                  x:Name="DgZakazi"
+                  Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Width="660"
+                  HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="#FFE0E0E0" Foreground="#FFE0E0E0">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Foreground" Value="#FFE0E0E0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFF2F2F2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="TextBlock" x:Key="WrapText">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Услуга" Binding="{Binding Usluga.Name}" Width="200"
+                                        ElementStyle="{StaticResource WrapText}"/>
+                    <DataGridTextColumn Header="Описание" Binding="{Binding DescriprionByClient}" Width="200"
+                                        ElementStyle="{StaticResource WrapText}"/>
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Status.Name}" Width="150"
+                                        ElementStyle="{StaticResource WrapText}"/>
+                    <DataGridTextColumn Header="Работник" Binding="{Binding AcceptedByWhom}" Width="200"
+                                        ElementStyle="{StaticResource WrapText}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="BCheck" ToolTip="Подтверждение заказов" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                     Height="70" Width="70" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Background="{x:Null}" BorderBrush="{x:Null}" Click="BCheck_Click" Cursor="Hand">
+                <materialDesign:PackIcon Kind="CheckCircleOutline" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Height="45" Width="45" Foreground="#FFE0E0E0"/>
+            </Button>
+        </Grid>
+    </Border>
+</Page>

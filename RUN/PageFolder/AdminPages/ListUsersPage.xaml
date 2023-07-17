@@ -1,0 +1,120 @@
+﻿<Page x:Class="RUN.PageFolder.AdminPages.ListUsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RUN.PageFolder.AdminPages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Список клиентов">
+
+    <Border CornerRadius="30"
+                Width="780"
+                Height="450"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF00B7CE"/>
+                <GradientStop Color="#FF006DFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="50"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="678*"/>
+                <ColumnDefinition Width="101*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="58*"/>
+                <RowDefinition Height="63*"/>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="169*"/>
+                <RowDefinition Height="39*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Список клиентов" FontSize="28" FontWeight="Bold"
+               Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFE0E0E0"/>
+
+            <materialDesign:PackIcon Kind="Search" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20 -3 0 0"
+                                     Height="30" Width="30" Panel.ZIndex="1" Foreground="#FFE0E0E0"/>
+            <TextBox x:Name="TbSearch" Grid.Row="1" Grid.Column="1" Margin="20 0 0 0" materialDesign:HintAssist.HintOpacity="1"
+                 Width="640" HorizontalAlignment="Left" Height="30" BorderBrush="#FFE0E0E0" FontSize="16"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         materialDesign:HintAssist.Hint="Поиск" Padding="30 3 0 0"
+                 TextChanged="TbSearch_TextChanged" Foreground="#FFE0E0E0"/>
+
+            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" ToolTip="Двойное нажатие - редактирование"
+                  x:Name="DgUsers" MouseDoubleClick="DgUsers_MouseDoubleClick"
+                  Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Width="660"
+                  HorizontalAlignment="Center" Foreground="#FFE0E0E0" Background="{x:Null}">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Foreground" Value="#FFE0E0E0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFF2F2F2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="TextBlock" x:Key="WrapText">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" 
+                                    Binding="{Binding Surname}" ElementStyle="{StaticResource WrapText}"
+                                    Width="100"/>
+                    <DataGridTextColumn Header="Имя"
+                                    Binding="{Binding Name}" ElementStyle="{StaticResource WrapText}"
+                                    Width="80"/>
+                    <DataGridTextColumn Header="Отчество"
+                                    Binding="{Binding Patronymic}" ElementStyle="{StaticResource WrapText}"
+                                    Width="100"/>
+                    <DataGridTextColumn Header="Номер телефона" 
+                                    Binding="{Binding Phone}" ElementStyle="{StaticResource WrapText}"
+                                    Width="140"/>
+                    <DataGridTextColumn Header="Логин" 
+                                    Binding="{Binding User.Login}" ElementStyle="{StaticResource WrapText}"
+                                    Width="155"/>
+                    <DataGridTextColumn Header="Пароль" 
+                                    Binding="{Binding User.Password}" ElementStyle="{StaticResource WrapText}"
+                                    Width="155"/>
+                    <DataGridTextColumn Header="Контрольный вопрос" 
+                                    Binding="{Binding ControlQuestion.Name}" ElementStyle="{StaticResource WrapText}"
+                                    Width="155"/>
+                    <DataGridTextColumn Header="Ответ" 
+                                    Binding="{Binding AnswerOnQuestion}" ElementStyle="{StaticResource WrapText}"
+                                    Width="155"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <materialDesign:PopupBox Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                     Height="45" Width="45" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                PlacementMode="BottomAndAlignCentres"
+                ToolTipService.Placement="Right"
+                ToolTip="Действия"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand" Background="{x:Null}" BorderBrush="#FFE0E0E0" Foreground="#FFE0E0E0">
+                <StackPanel>
+                    <Button x:Name="BAdd" ToolTip="Добавление" Height="50" Width="50" Margin="10" Click="BAdd_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon 
+                            Kind="PlusCircle" Height="35" Width="35" Foreground="#FFE0E0E0"/>
+                    </Button>
+
+                    <Button x:Name="BDel" ToolTip="Удаление" Height="50" Width="50" Margin="10" Click="BDel_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon 
+                            Kind="MinusCircle" Height="35" Width="35" Foreground="#FFE0E0E0"/>
+                    </Button>
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </Grid>
+    </Border>
+</Page>
